@@ -1,0 +1,228 @@
+body {
+  width: 100%;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.85);
+  font-family: Verdana, sans-serif;
+  color: white;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 7rem;
+  padding-block: 5rem;
+  text-align: center;
+  animation: pulse 3s linear infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.blob {
+  filter: blur(40px);
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  opacity: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255, 0.5);
+  transition: all 300ms ease-in-out;
+}
+
+.fakeblob {
+  display: hidden;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.cards-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card {
+  overflow: hidden;
+  padding: 3px;
+  margin: 0;
+  background: rgb(128 128 128 / 0.2);
+  border-radius: 10px;
+  position: relative;
+  transition: all 300ms ease-in-out;
+}
+
+.inner {
+  border-radius: 7px;
+  padding: 10px;
+  width: 210px;
+  height: 150px;
+  background: rgb(26,26,26);
+  backdrop-filter: blur(80px);
+  transition: all 300ms ease-in-out;
+}
+
+.card:hover > .inner {
+  background: rgb(26,26,26, 0.6);
+  backdrop-filter: blur(80px);
+}
+
+/* Abschnitt 2 */
+.container-section2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-section2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Reduzierte Lücke zwischen den Karten */
+  margin-top: 3rem;
+}
+
+.box-section2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px; /* Gleiche Breite wie Karten in Teil 1 */
+  height: 150px; /* Gleiche Höhe wie Karten in Teil 1 */
+  background: black;
+  padding: 10px; 
+  border-radius: 10px; /* Gleiche Abrundung wie Teil 1 */
+}
+
+.box-section2 .content-section2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px; /* Weniger Abstand zwischen Elementen */
+  color: #ddd;
+  letter-spacing: 0.1rem; /* Weniger Buchstabenabstand */
+  padding: 5px; /* Weniger Innenabstand */
+  text-align: center;
+}
+
+.box-section2 .content-section2 h1 {
+  font-size: 1rem; /* Reduzierte Schriftgröße */
+  padding-block: 0;
+  margin-bottom: 0;
+}
+
+.box-section2 .content-section2 p {
+  font-size: 0.9rem; /* Kleinere Schriftgröße */
+}
+
+.box-section2 .content-section2 h3 {
+  font-size: 1rem; /* Reduzierte Schriftgröße */
+}
+
+.box-section2 .content-section2 p {
+  font-size: .9rem; /* Reduzierte Schriftgröße */
+  margin-block: 0;
+}
+
+.box-section2 .glass-section2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Passt sich der Kartengröße an */
+  height: 100%; /* Passt sich der Kartengröße an */
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  border-radius: 10px; /* Gleiche Abrundung wie die Karten */
+}
+
+.box-section2::before,
+.box-section2::after {
+  content: "";
+  position: absolute;
+  inset: -2px; /* Reduziert für kleinere Karten */
+  z-index: -1;
+  border-radius: 12px; /* Etwas größer als die Karten für den Effekt */
+}
+
+.box-section2:nth-child(1)::before,
+.box-section2:nth-child(1)::after {
+  background: conic-gradient(from var(--angle), #0c63e7, #060c21, #d11149, #060c21, #0c63e7);
+}
+
+.box-section2:nth-child(2)::before,
+.box-section2:nth-child(2)::after {
+  background: conic-gradient(from var(--angle), #f35807, #060c21, #36d709, #060c21, #f35807);
+}
+
+.box-section2:nth-child(3)::before,
+.box-section2:nth-child(3)::after {
+  background: conic-gradient(from var(--angle), #dfff00, #060c21, #9600ff, #060c21, #dfff00);
+}
+
+.box-section2::after {
+  z-index: -2;
+  filter: blur(10px); /* Reduzierte Unschärfe passend zur Kartengröße */
+}
+
+.box-section2:hover::before,
+.box-section2:hover::after {
+  animation: glowing-border-section2 3.5s linear infinite;
+}
+
+.box-section2:hover::after {
+  animation: glowing-border-section2 3.5s linear infinite, blur-effect-section2 3.5s linear infinite;
+}
+
+/* Reduzierte Animationen */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 53deg;
+  inherits: false;
+}
+
+@keyframes glowing-border-section2 {
+  from {
+      --angle: 53deg;
+  }
+  to {
+      --angle: 413deg;
+  }
+}
+
+@keyframes blur-effect-section2 {
+  from {
+      filter: blur(10px);
+  }
+  to {
+      filter: blur(9px);
+  }
+}
